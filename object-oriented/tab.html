@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡--面向对象</title>
+	<script type="text/javascript">
+        /*window.onload = function() {
+             var oLi = document.getElementsByTagName('li');
+             var aDiv = document.getElementsByTagName('div');
+             for (var i = 0; i < oLi.length; i++) {
+             	oLi[i].index = i;
+             	oLi[i].onclick = function() {
+                    for (var j = 0; j < oLi.length; j++) {
+                    	aDiv[j].style.display = "none";
+                    };
+                    
+                    aDiv[this.index].style.display = "block";
+             	}
+             };
+        }*/
+
+        /*面向对象*/
+        window.onload = function() {
+        	var tab1 = new TabSwich();
+        }
+        function TabSwich() {
+             var _this = this
+             this.oLi = document.getElementsByTagName('li');
+             this.aDiv = document.getElementsByTagName('div');
+             for (var i = 0; i < this.oLi.length; i++) {
+             	this.oLi[i].index = i;
+             	this.oLi[i].onclick = function(){
+             		_this.tab(this);
+             	}
+             }
+
+        }
+        TabSwich.prototype.tab = function (oLi) {
+              for (var j = 0; j < this.oLi.length; j++) {
+               this.aDiv[j].style.display = "none";
+              };
+                    
+              this.aDiv[oLi.index].style.display = "block";
+        }
+	</script>
+	<style type="text/css">
+        li {
+        	list-style-type: none;
+        	display: inline-block;
+        	border: 1px solid #000;
+        }
+        .content{
+        	width: 200px;
+        	height: 400px;
+        	border: 1px solid #000;
+        }
+	</style>
+</head>
+<body>
+<ul>
+	<li>选项1</li>
+	<li>选项2</li>
+	<li>选项3</li>
+</ul>
+<div class="content">
+	内容1
+</div>
+<div class="content" style="display:none">
+	内容2
+</div>
+<div class="content" style="display:none">
+	内容3
+</div>
+</body>
+</html>
